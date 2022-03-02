@@ -87,14 +87,3 @@ m.set( 11, 12, 13, 14,
 
        scene.add(m);
 
-
-      //  const element = (
-      //   <h1>
-      //     Hello, {formatName(user)}!
-      //   </h1>
-      // );
-      
-      // ReactDOM.render(
-      //   element,
-      //   document.getElementById('root')
-      // );
