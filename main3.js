@@ -155,47 +155,7 @@ function button(){
   
      
     }
-    // f(camera.position.z === 0){
-    //   clearInterval(inter) 
-    //   document.getElementById('bg').style.display="none";
-    //   document.getElementById('bg2').style.display="block";}
-    
-    // async function wait2() {
-    //   await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    //   // return 1;
-    // }
-    
-    
-    // function f2() {
-    //   // shows 10 after 1 second
-
-    //   wait2().then(() => camera.position.setZ(camera.position.z - 0.01));
-    // //   wait(f()).then(
-    // //     setInterval(() => {
-    // //       camera.position.setZ(camera.position.z - 0.01), 100}),
-    // //       setTimeout(() => {  
-    // //         document.getElementById('bg').style.display="none";
-    // // document.getElementById('bg2').style.display="block";}, 3000)
-    // //   );
-    // }
-    
-
    
-    // f2();
-   
-//     const inter = setInterval(() => {
-//       camera.position.setZ(camera.position.z - 0.01), 100});
-//       setTimeout(() => {  clearInterval(inter) 
-//         document.getElementById('bg').style.display="none";
-// document.getElementById('bg2').style.display="block";}, 2000);
-
-           
-  
-
- 
- 
-
 
 function animate() {
   requestAnimationFrame(animate);
