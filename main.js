@@ -1,7 +1,6 @@
 import './index.css'
 import * as THREE from 'three';
 
-// import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
 // import { Texture } from 'three';
 
 // import Swup from 'swup';
@@ -19,12 +18,9 @@ let bg2 = document.getElementById('bg2')
 let knowMenu  = document.getElementById('knowMenu')
 
 
-
-  
 bg2.style.display="none";
 // menu1.style.display ="block";
 menu2.style.display ="none";
-
 
 const renderer = new THREE.WebGLRenderer({
   canvas: bg
@@ -52,9 +48,20 @@ const material = new THREE.MeshStandardMaterial({ color: 0x657fd1 });
 const torus = new THREE.Mesh(geometry, material);
 
 scene.add(torus);
-camera.position.setZ(45);
-camera.position.setX(0);
-camera.position.setY(0);  
+
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
+
+const controls =  new OrbitControls(camera, renderer.domElement);
+
+function addCamerPosition(){
+controls.saveState(
+  camera.position.setZ(45),
+camera.position.setX(0),
+camera.position.setY(0)  
+
+);
+controls.update();
+}
 
 
 
@@ -67,16 +74,6 @@ const ambientlight = new THREE.AmbientLight(0xffffff);
 
 scene.add(pointlight, ambientlight);
 
-// function moveCamera(){
-//   const t = document.body.getBoundingClientRect().top;
-
-//   camera.position.y = t * -0.01;
-//   camera.position.z = t * -0.0002;
-//   camera.position.x = t * -0.0002;
-
-// }
-
-// document.body.onscroll = moveCamera;
 
 function addStart(){
 
@@ -108,7 +105,7 @@ Array(1000).fill().forEach(addStart);
 
 
 function button(){
-  document.getElementById('butoonId').addEventListener('click', () => {
+  document.getElementById('home').addEventListener('click', () => {
     const textsToHide = document.getElementById('sectionTexts');
     textsToHide.style.display="none";
     // knowMenu.style.opacity = 0;
@@ -141,36 +138,78 @@ function button(){
       }, 3000));
      
     }
-   
     function fadeOut(){
-
       bg.style.opacity = 0.5;
       bg.style.transition = '1.5s';
-   
       menu1.style.opacity = 0;
       menu1.style.transition = '0.5s';
- 
   }
-   
       f();
       fadeOut();
-  });
+  }); }
+   
+
   
-     
-    }
+ 
+  // controls.update();
+  // controls.addEventListener('change', renderer.domElement);
+  
+    
+    // function moveArround(){
+    //   document.getElementById('moveArround').addEventListener('click', waitMove)
+
+    // async function waitMove(){
+    //   await new Promise((resolve) =>
+    //                 setTimeout(resolve, 1000));
+                    
+    //                 // controls.listenToKeyEvents();
+                
+    //                 document.getElementById('home').style.display="none";
+    //                 document.getElementById('moveArround').style.display="none";
+    //               }
+
+    // waitMove().then((() =>  controls.update()));
+  
+    //             }
+    function moveArround(){
+    
+      document.getElementById('moveArround').addEventListener('click', () => {
+        
+       
+document.getElementById('home').style.display="none";
+document.getElementById('moveArround').style.display="none";
+// controls.keys();
+controls.update = true;
+    }); 
+  }
+
+    function reset(){
+      document.getElementById('reset').addEventListener('click', () => {
+      camera.position.setZ(45);
+camera.position.setX(0);
+camera.position.setY(0);  
+document.getElementById('home').style.display="block";
+document.getElementById('moveArround').style.display="block";
+controls.reset();
+controls.update();
+    });
+  }
    
 
 function animate() {
-  
+  // controls.dispose();
   requestAnimationFrame(animate);
   window.addEventListener( 'resize', onWindowResize );
+  // window.onload()
 torus.rotation.z += 7;
 
-// controls.update(); 
-
 renderer.render(scene, camera);
+
 button();
+moveArround();
+reset();
 }
 
 
+addCamerPosition();
 animate();
