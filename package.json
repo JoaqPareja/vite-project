@@ -13,6 +13,7 @@
   "dependencies": {
     "granim": "^2.0.0",
     "swup": "^2.0.14",
-    "three": "^0.136.0"
+    "three": "^0.136.0",
+    "type": "module"
   }
 }
