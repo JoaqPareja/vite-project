@@ -45,7 +45,7 @@ const torus = new THREE.Mesh(geometry, material);
 
 scene.add(torus);
 
-import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
+import {OrbitControls} from './jsm/controls/OrbitControls.js';
 
 const controls =  new OrbitControls(camera, renderer.domElement);
 
